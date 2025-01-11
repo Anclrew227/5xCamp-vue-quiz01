@@ -14,8 +14,20 @@ const search = () => {
   });
 }
 
-const orderAvailableRentBikes = () => {
-  uBikeStopsCopy.value = uBikeStopsCopy.value.sort();
+const sortCarByAsc = () => {
+  uBikeStopsCopy.value = uBikeStopsCopy.value.sort((a, b) => a.sbi - b.sbi);
+}
+
+const sortCarByDesc = () => {
+  uBikeStopsCopy.value = uBikeStopsCopy.value.sort((a, b) => b.sbi - a.sbi);
+}
+
+const sortParkingByAsc = () => {
+  uBikeStopsCopy.value = uBikeStopsCopy.value.sort((a, b) => a.tot - b.tot);
+}
+
+const sortParkingByDesc = () => {
+  uBikeStopsCopy.value = uBikeStopsCopy.value.sort((a, b) => b.tot - a.tot);
 }
 // 資料來源: https://data.ntpc.gov.tw/openapi/swagger-ui/index.html?configUrl=%2Fapi%2Fv1%2Fopenapi%2Fswagger%2Fconfig&urls.primaryName=%E6%96%B0%E5%8C%97%E5%B8%82%E6%94%BF%E5%BA%9C%E4%BA%A4%E9%80%9A%E5%B1%80(94)#/JSON/get_010e5b15_3823_4b20_b401_b1cf000550c5_json
 
@@ -72,12 +84,12 @@ const timeFormat = (val) => {
           <th>場站名稱</th>
           <th>場站區域</th>
           <th>目前可用車輛
-            <i class="fa fa-sort-asc" aria-hidden="true"></i>
-            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            <i class="fa fa-sort-asc" aria-hidden="true" @click="sortCarByAsc"></i>
+            <i class="fa fa-sort-desc" aria-hidden="true" @click="sortCarByDesc"></i>
           </th>
           <th>總停車格
-            <i class="fa fa-sort-asc" aria-hidden="true"></i>
-            <i class="fa fa-sort-desc" aria-hidden="true"></i>
+            <i class="fa fa-sort-asc" aria-hidden="true" @click="sortParkingByAsc"></i>
+            <i class="fa fa-sort-desc" aria-hidden="true" @click="sortParkingByDesc"></i>
           </th>
           <th>資料更新時間</th>          
         </tr>
